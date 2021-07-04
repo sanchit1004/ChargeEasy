@@ -3,6 +3,7 @@ A web application created for EV drivers in India
 
 ## Technologies and Tools Used
 * Angular Framework (Typescript, HTML, CSS)
+* Angular Material Design
 * Firebase Authentication
 * Firestore Database
 * Mapbox API

@@ -1,0 +1,45 @@
+.login-page {
+    top: 0;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    background-position: center;
+    background-repeat: no-repeat;
+    /*background-image: url('C:/Users/sanchit/Desktop/ChargeEasy/IMG_20210429_204911.jpg');*/
+    background-image: url('C:/Users/sanchit/Desktop/ChargeEasy/IMG_20210525_182959.jpg');
+    background-size: cover;
+    overflow: hidden;background-color: #303F9F;
+  }
+  
+  mat-card {
+    width: 30%;
+    margin: 10% auto;
+    border-radius: 8px;
+  }
+  mat-form-field, mat-checkbox {
+    width: 80%;
+    display: block;
+    margin: auto;
+  }
+  mat-card-content {
+    margin-top: 20px;
+    width: 100%
+  }
+  
+  .login-button {
+    margin-top: 20px;
+    display: block;
+    width: 80%;
+    margin: 20px auto;
+  }
+  
+/*.center {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 5px /*solid blue/*#FFFF00*/;
+    /*padding: 10px;*/
+/*}*/

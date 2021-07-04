@@ -1,0 +1,206 @@
+<div class="login-page">
+  <mat-card class="mat-elevation-z12">
+    <mat-card-title style="text-align:center;">Welcome to ChargeEasy</mat-card-title>
+    <mat-tab-group *ngIf="!isSignedIn" mat-stretch-tabs class="example-stretched-tabs">
+      <mat-tab label="Sign In">
+          <mat-card-content>
+            <form action="">
+              <mat-form-field>
+                <!--<input
+                  matInput
+                  placeholder="Email"
+                  required
+                  name="email"
+                  ngModel
+                  #email="ngModel">
+                  <mat-error *ngIf="email.invalid">Email is required</mat-error>-->
+                  <input #signinemail type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
+                  placeholder="Email : Ex. pat@example.com" >
+                  <!--<mat-hint>Errors appear instantly!</mat-hint>-->
+                  <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                      Please enter a valid email address
+                  </mat-error>
+                  <mat-error *ngIf="emailFormControl.hasError('required')">
+                      Email is <strong>required</strong>
+                  </mat-error>
+                <mat-icon matSuffix>email</mat-icon>
+              </mat-form-field>
+              <mat-form-field>
+                <input
+                  matInput
+                  placeholder="Password"
+                  type="password"
+                  required
+                  minlength="6"
+                  name="signinpassword"
+                  ngModel
+                  #password="ngModel">
+                  <mat-error
+                    *ngIf="password.errors && password.errors.required">
+                    Password is required
+                  </mat-error>
+                  <mat-error
+                    *ngIf="password.errors && password.errors.minlength">
+                    Password must be of length 6
+                  </mat-error>
+                <mat-icon matSuffix>lock</mat-icon>
+              </mat-form-field>
+              <!--<mat-checkbox>Remember Me!</mat-checkbox>-->
+              <button
+                mat-raised-button
+                color="primary"
+                class="login-button"
+                (click)="onSignin(signinemail.value, password.value)">
+                Log In
+              </button>
+
+              <!--<button
+                mat-raised-button
+                class="login-button">
+                Login with Google
+              </button>-->
+            </form>
+          </mat-card-content>
+      </mat-tab>
+      <mat-tab label="Sign Up">
+        <mat-card-content>
+          <form action="">
+            <mat-form-field>
+              <input
+                matInput
+                placeholder="User Name"
+                required
+                name="username"
+                ngModel
+                #username="ngModel"
+                [(ngModel)]="customer.Username">
+              <mat-icon matSuffix>perm_identity</mat-icon>
+              <mat-error
+                *ngIf="username.invalid">
+                Username is required
+              </mat-error>
+
+            </mat-form-field>
+            <mat-form-field>
+              <!--<input
+                matInput
+                placeholder="Email"
+                required
+                name="email"
+                ngModel
+                #email="ngModel">
+                <mat-error *ngIf="email.invalid">Email is required</mat-error>
+              <mat-icon matSuffix>email</mat-icon>-->
+              <input #signupemail type="email" id = "signupemail" name = "signupemail" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
+                  placeholder="Email : Ex. pat@example.com" [(ngModel)]="customer.Email">
+                  <!--<mat-hint>Errors appear instantly!</mat-hint>-->
+                  <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                      Please enter a valid email address
+                  </mat-error>
+                  <mat-error *ngIf="emailFormControl.hasError('required')">
+                      Email is <strong>required</strong>
+                  </mat-error>
+                  <mat-icon matSuffix>email</mat-icon>
+            </mat-form-field>
+            <mat-form-field>
+              <input
+                matInput
+                placeholder="Password"
+                type="password"
+                required
+                minlength="6"
+                id = "signuppassword"
+                name="signuppassword"
+                ngModel
+                #signuppassword="ngModel">
+                <mat-error
+                  *ngIf="password.errors && password.errors.required">
+                  Password is required
+                </mat-error>
+                <mat-error
+                  *ngIf="password.errors && password.errors.minlength">
+                  Password must be of length 6
+                </mat-error>
+              <mat-icon matSuffix>lock</mat-icon>
+
+            </mat-form-field>
+            <!--<mat-form-field>
+                <input
+                matInput
+                placeholder="Re-enter Password"
+                type="password"
+                required
+                minlength="6"
+                name="repassword"
+                ngModel
+                #repassword="ngModel"
+                
+                [errorStateMatcher]="errorMatcher">
+                <mat-error
+                  *ngIf="repassword.errors && repassword.errors.required">
+                  Re-Enter Password is required
+                </mat-error>
+                <mat-error *ngIf="userForm.hasError('passwordsDoNotMatch')">
+                  Passwords do not match!
+                </mat-error>
+              <mat-icon matSuffix>lock</mat-icon>
+            </mat-form-field>-->
+            <mat-form-field>
+              <mat-select placeholder="Cars" multiple>
+                <mat-option *ngFor="let car of cars" (onSelectionChange)="getValues($event)" [value]="car">{{ car }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <button
+              mat-raised-button
+              color="primary"
+              class="login-button"
+              (click)="onSignup(signupemail.value, signuppassword.value)">
+              Sign Up
+            </button>
+          </form>
+        </mat-card-content>
+      </mat-tab>
+    </mat-tab-group>
+    <!--<mat-card-title *ngIf="isSignedIn">You are already signed in</mat-card-title>-->
+    <button *ngIf="isSignedIn"
+              mat-raised-button
+              color="primary"
+              class="login-button"
+              (click)="handleLogout()">
+              Logout
+            </button>
+  </mat-card>
+</div>
+<!--<div class="container-xl">
+    <div class="center">
+        <form [formGroup]="userForm" (ngSubmit)="onSubmit()" autocomplete="off">
+            <div class="form-group">
+                <!--<label>Username</label>-->
+                <!--<input placeholder="Enter Username" class="form-control" formControlName="username">
+                <p class="text-danger" *ngIf="submitted && hasError('username','required')">
+                    Username is required
+                </p>
+                <p class="text-danger" *ngIf="submitted && hasError('username','pattern')">
+                    Special Characters are not allowed
+                </p>
+                <p class="text-danger" *ngIf="submitted && hasError('username','maxlength')">
+                    Username length cannot be more than 50
+                </p>
+            </div>
+            
+            <!--<div align="center">-->
+            <!--<div class="form-group">
+                <!--<label>Password</label>-->
+                <!--<input type="password" placeholder="Enter Password" class="form-control" formControlName="password">
+                <p class="text-danger" *ngIf="submitted && hasError('password','required')">
+                    Password is required
+                </p>
+                <p class="text-danger" *ngIf="submitted && hasError('password','minlength')">
+                    Password minimum length is 8
+                </p>
+            </div>
+            <!--</div>-->
+            <!--<button class="btn btn-success">Verify and Proceed</button>
+        </form>
+    </div>
+</div>-->

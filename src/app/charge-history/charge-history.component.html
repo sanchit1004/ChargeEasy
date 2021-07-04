@@ -1,0 +1,56 @@
+<div class="login-page">
+<h1 style="text-align:center; color : blue"> Charge History </h1>
+<div *ngIf = "cust_email_for_history != undefined && error_s==0">
+    <table class="table table-striped table-dark table-bordered">
+        <tr>
+            <th>Car</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Battery Percentage Charged</th>
+        </tr>
+        <tr *ngFor="let history of history" class="collection">
+            <!--<tr>{{ cust_email_for_history }}</tr>-->
+            <td>{{ history.Car }} </td>
+            <td>{{ history.Date }} </td>
+            <td>{{ history.Time }} </td>
+            <td>{{ history.Battery_Charge }}</td>
+        </tr>
+    </table>
+    <div class="login-page">
+        <mat-card>
+            <mat-card-content>
+            <form [formGroup]="rateControl" action="">
+                    <input matInput
+                    type="number" min="0" max="100" 
+                    required class="form-control" 
+                    placeholder="Enter Charged Battery Percentage" 
+                    formControlName="battery" [(ngModel)]="battery_percent" required>
+                    <mat-error *ngIf="hasError('battery','required')">
+                        <strong>*required</strong>
+                    </mat-error>
+                    <mat-error *ngIf="hasError('battery','max')">
+                        Should be less than 100
+                    </mat-error>
+                    <br>
+                    <mat-form-field>
+                        <mat-select placeholder="Cars" (selectionChange)="selectCar($event)" required>
+                            <mat-option *ngFor="let car of cars"  [value]="car">{{ car }}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <button mat-raised-button class="login-button" color = "primary" (click)='add()'>
+                        Add Record
+                    </button>
+            </form>   
+        </mat-card-content>
+        </mat-card>
+    </div>
+</div>
+<div *ngIf = "cust_email_for_history == undefined || error_s==1" class="text-danger" style="text-align:center">
+    You need to Login or Signup first
+</div>
+</div>
+
+
+
+
+

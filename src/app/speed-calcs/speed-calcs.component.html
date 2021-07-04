@@ -1,0 +1,123 @@
+<!--<div class="speed-container">   
+    <mat-card class="mat-elevation-z12">
+        <mat-card-title style="text-align:center;">Optimum Speed</mat-card-title>
+            <mat-card-content>
+                <mat-card-subtitle>
+                    Total Distance: {{total_distance}} km
+                </mat-card-subtitle>
+                <mat-form-field>
+                  <input
+                    matInput
+                    placeholder="Enter Battery Percentage">
+                </mat-form-field>
+                <!--<mat-form-field>
+                <mat-label>Your Car</mat-label>
+                <mat-select name="carName" [(value)]="selectedCar" placeholder="Car">
+                    <mat-option *ngFor="let car of cars" [value]="y_car">
+                        {{car}}
+                    </mat-option>
+                </mat-select>
+                </mat-form-field>-->
+<!--                <button
+                  mat-raised-button
+                  color="primary"
+                  class="login-button">
+                  Calculate Speed
+                </button><br><br>
+                <mat-card-subtitle>
+                    Optimum Speed: {{Optimum_speed}}
+                </mat-card-subtitle>
+          </mat-card-content>
+    </mat-card>
+</div>
+-->
+
+<div class="speed-container" >
+    <mat-card class="mat-elevation-z12">
+        <!--<div *ngIf="!Number.isNaN(total_distance); then thenblock; else elseblock">
+            <ng-template #thenblock>
+                <h2 class="text-success">Total Distance: {{total_distance}} km</h2>
+                <h2 class="text-success">Total Time: {{timeString}} </h2>
+            </ng-template>
+            <ng-template #elseblock>
+                <h2>Select Location on the map</h2>
+            </ng-template>
+        </div>-->
+        <h2 *ngIf="total_distance!='NaN'; then thenDistance; else elseDistance"></h2>
+        <ng-template #thenDistance>
+            <h2 class="text-success">Total Distance: {{total_distance}} km</h2>
+            <!--<h2 class="text-success">Total Time: {{timeString}} </h2>-->
+        </ng-template>
+        <ng-template #elseDistance>
+            <h2 class="text-danger">Please select the location on Navigation page</h2>
+        </ng-template>
+        <!--<mat-form-field>-->
+        <div>Battery Percentage:
+        <input type="text" class="form-control" placeholder="Enter Battery Percentage" [(ngModel)]="battery_percent"/>
+    <!--<div class="form-group">Battery:
+        <input type="text" class="form-control" placeholder="Enter Battery Percentage" [(ngModel)]="battery_percent"/>
+    </div>-->
+    <!--<mat-form-field appearance="fill">
+        <mat-label>Your Car</mat-label>
+        <mat-select>
+            <mat-option *ngFor="let car of cars" [value]="car">{{car}}</mat-option>
+        </mat-select>
+    </mat-form-field>-->
+    <div>
+    <div>Select your Car:
+        <select class="form-control" [(ngModel)]="selectedCar">
+            <option *ngFor="let car of cars">{{car}}</option>
+        </select>
+    </div>
+    <br>
+    <div>
+    <button mat-raised-button class="btn" color = "primary" (click)="calculate()">
+        Calculate Speed
+    </button>
+    </div>
+    <div>
+    <h2 *ngIf="(opti_speed!=null && opti_speed!='Not possible. Charge your battery first') ; then thenblock; else elseblock"></h2>
+    <ng-template #elseblock>
+        <h2 class="text-danger" >{{opti_speed}}</h2>
+    </ng-template>
+    <ng-template #thenblock>
+        <br>
+        <table class="table table-dark">
+            <tr>
+                <th></th>
+                <th>Speed(km/hr)</th>
+                <th>Time</th>
+            </tr>
+            <tr>
+                <th>Traffic</th>
+                <td>{{ traffic_speed }}</td>
+                <td>{{ timeString }}</td>
+            </tr>
+            <tr>
+                <th>Optimum<br>Achievable</th>
+                <td> {{opti_speed}} </td>
+                <td> {{opti_time}} </td>
+            </tr>
+        </table>
+        <!--<h2 *ngIf="display==true">Traffic Speed: {{ traffic_speed }} km/hr</h2>
+        <h2 *ngIf="display==true">Traffic Time: {{ timeString }} </h2>
+        <h2 class="text-primary">Optimum Speed: {{opti_speed}}</h2>
+        <h2 class="text-primary">Optimum Time: {{opti_time}} </h2>-->
+
+        <!--<h2 class="text-success" >{{opti_speed}}</h2>-->
+    </ng-template>
+    </div>
+    <!--</mat-form-field>
+    </mat-card>-->
+</div>
+<!--<div class="razorpay-embed-btn" data-url="https://pages.razorpay.com/pl_H0KG7kJH04OCUT/view" data-text="Pay Now" data-color="#528FF0" data-size="large">
+    <script>
+      (function(){
+        var d=document; var x=!d.getElementById('razorpay-embed-btn-js')
+        if(x){ var s=d.createElement('script'); s.defer=!0;s.id='razorpay-embed-btn-js';
+        s.src='https://cdn.razorpay.com/static/embed_btn/bundle.js';d.body.appendChild(s);} else{var rzp=window['__rzp__'];
+        rzp && rzp.init && rzp.init()}})();
+    </script>
+  </div>-->
+      
+

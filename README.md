@@ -2,13 +2,13 @@
 A web application created for EV drivers in India
 
 ## Technologies and Tools Used
-* Angular Framework (Typescript, HTML, CSS )
+* Angular Framework (Typescript, HTML, CSS)
 * Firebase Authentication
 * Firestore Database
 * Mapbox API
 * RazorPay Payments Page 
 
-## Some pictures demonstrating key features
+## Some Pictures Demonstrating Key Features
 ![Sign_in](https://user-images.githubusercontent.com/60934133/124379411-80fa5900-dcd4-11eb-8e99-cc4984af3114.PNG)
 ![Sign_up](https://user-images.githubusercontent.com/60934133/124379412-82c41c80-dcd4-11eb-9542-e5e6abd180de.PNG)
 ![Charge_History](https://user-images.githubusercontent.com/60934133/124379406-7b047800-dcd4-11eb-8807-bce697b130b1.PNG)

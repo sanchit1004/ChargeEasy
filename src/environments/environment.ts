@@ -5,15 +5,16 @@
 export const environment = {
   production: false,
   mapbox:{
-    accessToken: 'pk.eyJ1Ijoic2FuY2hpdHJvdGUiLCJhIjoiY2ttazkxOTAyMHl0cDJ2cXZuZjdkeXpybCJ9.i2FtOwRUlxZadT7TtMzSog'
+    accessToken: 'Your_Access_Token_Here'
   },
+  //Get all these after creating firebase project
   firebase: { 
-    apiKey: "AIzaSyDTcHfydsMb4DbaAHqyfRHnBUHoByPcLxg",
-    authDomain: "evauth-dfd9a.firebaseapp.com",
-    projectId: "evauth-dfd9a",
-    storageBucket: "evauth-dfd9a.appspot.com",
-    messagingSenderId: "592150548805",
-    appId: "1:592150548805:web:1085843c438a40c4dfee2c"
+    apiKey: "Your_API_Key",
+    authDomain: "Your_ Auth_Domain",
+    projectId: "Your_Project_ID",
+    storageBucket: "Your_Storage_Bucket",
+    messagingSenderId: "Your_messaging_sender_ID",
+    appId: "Your_appId"
   }
 };
 
